@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE books [
+	<!ELEMENT books (book*)>
+	<!ELEMENT book (title,author+,press,price,page,(ebook|paper))>
+	<!ELEMENT title (#PCDATA)>
+	<!ELEMENT author (#PCDATA)>
+	<!ELEMENT press (#PCDATA)>
+	<!ELEMENT price (#PCDATA)>
+	<!ELEMENT page 	(#PCDATA)>
+	<!ELEMENT ebook EMPTY>
+	<!ELEMENT paper EMPTY>
+	<!ATTLIST book
+		isbn	ID	#REQUIRED
+		cover	CDATA	#IMPLIED
+		index	CDATA	#FIXED 'yes'
+		cd		CDATA 	'no'
+		tape	CDATA 	'no'
+		lang	(korean|english|japan|etc) 'korean'
+	>
+	<!ATTLIST press
+		compno	ID #REQUIRED
+	>
+	
+	<!ENTITY bit "비트교육센터">
+]>
+<books>
+	<book isbn='B001' cover='yes' cd="yes" tape="yes">
+		<title>anta..</title>
+		<author>홍길동</author>
+	    <press compno="C001">&bit; press</press>
+	    <price>2000</price>
+	    <page>300</page>
+	    <ebook/>
+	</book>
+	<book isbn='B002' cd="yes" tape='yes' lang="etc" >
+		<title>anta..</title>
+		<author>임꺽정</author>
+		<author>일지매</author>
+	    <press compno="C002">bit press</press>
+	    <price>2000</price>
+	    <page>300</page>
+	    <paper/>
+	</book>
+</books>
+

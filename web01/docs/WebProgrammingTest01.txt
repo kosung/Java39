@@ -1,0 +1,20 @@
+문제: 부서번호를 입력 받아 해당 부서의 사원정보를 출력하는 서블릿
+1. 부서번호 조회입력폼
+요청: 
+	http://localhost:9999/web01/hr/searchEmp.html
+
+결과:
+	부서 [SALES ^] [조회]
+      
+      
+2. 부서의 소속 사원목록 화면(bit.java39.servlets.hr.EmployeeList)
+요청: 
+	http://localhost:9999/web01/hr/searchEmp?deptno=10
+
+결과:
+	사원번호 사원명 직무 급여 부서명 지역 상관명
+
+
+
+
+ 

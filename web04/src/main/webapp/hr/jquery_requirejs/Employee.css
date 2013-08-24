@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+#table {
+	width: 500px;
+}
+
+#listDiv {
+	position: relative;
+	height: 250px;
+}
+
+#detailDiv {
+	height: 300px;
+}
+
+#pageBar {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}

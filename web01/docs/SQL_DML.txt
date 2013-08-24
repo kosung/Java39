@@ -1,0 +1,71 @@
+* 데이터 등록 
+insert into 테이블명 (컬럼명, 컬러명, ...)
+values (값, 값, ...)
+- 컬럼의 개수와 값의 개수가 반드시 일치해야 한다.
+- 컬럼의 타입과 값의 타입이 일치해야 한다.
+
+=> 테이블의 컬럼을 지정하지 않으면 선언된 순서대로 값을 넣는다.
+INSERT INTO dept
+VALUES (83, '마케팅', '평창')
+
+=> 단 컬럼을 지정하지 않으면 모든 컬럼의 값을 넣어야 한다. 다음은 오류!
+INSERT INTO dept
+VALUES (84, '마케팅')
+
+=> 넣을 값의 컬럼을 지정할 수 있다.
+INSERT INTO dept (deptno, dname)
+VALUES (84, '마케팅')
+
+=> 테이블 정의 시 선언된 순서에 상관없이 컬럼을 지정할 수 있다.
+INSERT INTO dept (dname, deptno)
+VALUES ('홍보', 85)
+
+=> null 값을 지정할 수 있다.
+INSERT INTO dept (dname, deptno, loc)
+VALUES ('홍보', 86, null)
+
+
+=> 빈문자열을 넣어도 null이된다.
+INSERT INTO dept (dname, deptno, loc)
+VALUES ('홍보', 87, '')
+
+* 문자와 날짜 컬럼의 값은 반드시 ' ' 를 사용해야 한다.
+
+* 서브쿼리를 이용한 insert
+insert into 테이블명 (컬럼, 컬럼, 컬럼, ...)
+서브쿼리
+
+INSERT INTO dept (dname, deptno, loc)
+SELECT dname || '2', deptno + 1, loc || '2'
+FROM dept
+WHERE deptno < 50
+
+* 데이터 변경
+update 테이블명
+set 컬럼=값, 컬럼=값, ...
+where 조건...
+
+UPDATE dept
+SET loc='서울'
+WHERE loc IS NULL 
+
+* 데이터 삭제
+delete 테이블명
+where 조건...
+
+DELETE dept
+WHERE deptno=84
+
+=> 서브쿼리를 이용한 삭제
+DELETE dept
+WHERE deptno IN (
+	SELECT deptno FROM emp WHERE sal >= 3000)
+
+
+
+
+
+
+
+
+

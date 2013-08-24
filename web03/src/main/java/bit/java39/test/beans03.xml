@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       	http://www.springframework.org/schema/beans 
+       	http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <!-- 3) 인스턴스의 생성자 호출 -->
+   <bean id="engine" class="bit.java39.test.Engine"/>
+   <bean id="tire" class="bit.java39.test.Tire"/>
+   <bean id="car" class="bit.java39.test.Car">
+       <constructor-arg>
+           <value>티코</value>
+       </constructor-arg>
+       <constructor-arg>
+           <value>대우자동차</value>
+       </constructor-arg>
+       <constructor-arg>
+           <ref bean="engine"/>
+       </constructor-arg>
+   </bean>
+       	
+</beans>

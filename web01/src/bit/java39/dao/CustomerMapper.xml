@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bit.java39.dao.CustomerDao">
+    <select id="isExist" parameterType="map" resultType="int">
+        select count(*)
+        from custs
+        where c_id=#{id} and pwd=#{password}
+    </select>
+    
+    <select id="selectOne" parameterType="string" resultType="Customer">
+        select 
+        	c_id id,
+        	email,
+        	c_nm name,
+        	tel mobile,
+        	det_addr detailAddress
+        from custs
+        where c_id=#{value}
+    </select>
+<!--      
+	<select id="getEmployeeList" resultType="Employee">
+	    select 
+	    	e.empno as no, 
+	    	e.ename as name, 
+	    	e.job, 
+	    	e.sal as salary, 
+	    	d.dname as departmentName, 
+	    	d.loc as departmentLocation, 
+	    	m.ename as managerName
+	    from emp e 
+	    	left join dept d on e.deptno=d.deptno
+	    	left join emp m on e.mgr=m.empno
+	</select>  
+	
+	<insert id="insert" parameterType="Employee">
+	    insert into emp (empno,ename,job,mgr,hiredate,sal,comm,deptno) 
+	    values (
+	    	#{no}, #{name}, #{job}, #{managerNo}, 
+	    	#{hireDate}, #{salary}, #{commission}, #{departmentNo})
+	</insert>
+    
+    
+    
+    <delete id="delete" parameterType="int">
+        delete emp where empno=#{value}
+    </delete>
+    
+    <update id="update" parameterType="Employee">
+        update emp set
+			ename=#{name},
+			job=#{job},
+			mgr=#{managerNo},
+			hiredate=#{hireDate},
+			sal=#{salary},
+			comm=#{commission},
+			deptno=#{departmentNo}
+		where empno=#{no}
+    </update>
+-->    
+</mapper>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

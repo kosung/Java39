@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    	xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       	http://www.springframework.org/schema/beans 
+       	http://www.springframework.org/schema/beans/spring-beans.xsd">
+       	
+   <!-- 7) Factory객체가 리턴한 인스턴스를 다른 객체의 프로퍼티로 할당하기 
+   	=> scope의 기본 값은 singleton이다.
+   	=> prototype인 경우, getBean() 호출 때 마다 매번 객체를 생성하여 리턴한다.
+   -->
+   
+	<bean id="engine" class="bit.java39.test.EngineFactoryBean"
+	    scope="prototype"/>
+	
+	<bean id="car" class="bit.java39.test.Car">
+	    <property name="engine" ref="engine"/>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+

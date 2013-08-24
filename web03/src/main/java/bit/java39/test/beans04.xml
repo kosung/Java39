@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    	xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       	http://www.springframework.org/schema/beans 
+       	http://www.springframework.org/schema/beans/spring-beans.xsd">
+       	
+   <!-- 4) 인스턴스의 프로퍼티 짧은 설정 -->
+   <bean id="engine" class="bit.java39.test.Engine"/>
+   <bean id="tire" class="bit.java39.test.Tire"/>
+   <bean id="car" class="bit.java39.test.Car"
+      p:name="봉고" p:maker="기아자동차" p:engine-ref="engine" />
+   <!-- 
+   <bean id="car" class="bit.java39.test.Car">
+       <property name="name" value="마티즈2"/>
+       <property name="maker" value="쉐보레2"/>
+       <property name="engine" ref="engine"/>
+   </bean>
+   -->
+   <!--  
+   <bean id="car" class="bit.java39.test.Car">
+       <constructor-arg value="마티즈"/>
+       <constructor-arg value="쉐보레"/>
+       <constructor-arg ref="engine"/>
+   </bean>
+   -->    	
+</beans>

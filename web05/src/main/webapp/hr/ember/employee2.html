@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>직원관리</title>	
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/common.css">
+<style type="text/css">
+#table {
+	width: 500px;
+}
+
+#EmployeeList {
+	position: relative;
+	height: 250px;
+}
+
+#EmployeeList #pageBar {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+#detail {
+	height: 300px;
+}
+</style>
+
+</head>
+<body>
+
+<script type="text/x-handlebars">
+<section id="employeeApp">
+	<header id="header">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="#">J&apos;s Web</a>
+				<ul class="nav">
+					<li>{{#linkTo 'employees'}}Employee{{/linkTo}}</li>
+				</ul>
+			</div>
+		</div>  
+	</header>
+
+	<section id="content">
+	{{outlet}}
+	</section>
+	
+	<footer id="footer">
+	</footer>
+</section>
+	
+<footer id="info">
+	<p>꼬리말</p>
+</footer>
+</script>
+
+<script type="text/x-handlebars" id="employees">
+<p id='toolBar'>{{#linkTo 'employee.new'}}[신규]{{/linkTo}}</p>
+<div id='EmployeeList'>
+<h1>직원목록</h1>
+<table id="table">
+<tr>
+	<th>사원번호</th>
+	<th>사원명</th>
+	<th>직무</th>
+	<th>급여</th>
+	<th>부서명</th>
+	<th>지역</th>
+	<th>상관명</th>
+</tr>
+{{#each emp in model.employeeList}}
+<tr class='dataRow'>
+	<td>{{#linkTo 'employee' emp.no}}{{emp.no}}{{/linkTo}}</td>
+	<td>{{emp.name}}</td>
+	<td>{{emp.job}}</td>
+	<td>{{emp.salary}}</td>
+	<td>{{emp.departmentName}}</td>
+	<td>{{emp.departmentLocation}}</td>
+	<td>{{emp.managerName}}</td>
+</tr>
+{{/each}}
+</table>
+<p id="pageBar"> 
+<button {{action 'prevPage'}}>이전</button> 
+<span id="pageNo">{{currPage}}</span> 
+<button {{action 'nextPage'}}>다음</button>
+</p>
+</div>
+</script>
+
+<script type="text/x-handlebars" id="employee">
+<div id="detailDiv">
+<h1>직원정보</h1>
+직원번호 {{view Ember.TextField valueBinding="no"}}<br>
+이름 {{view Ember.TextField valueBinding="name"}}<br>
+직무 {{view Ember.TextField valueBinding="job"}}<br>
+관리자 {{view Ember.TextField valueBinding="managerNo"}}<br>
+입사일 {{view Ember.TextField valueBinding="hireDate"}}<br>
+급여 {{view Ember.TextField valueBinding="salary"}}<br>
+상여금 {{view Ember.TextField valueBinding="commission"}}<br>
+부서번호 {{view Ember.TextField valueBinding="departmentNo"}}<br>
+{{#unless no}}
+<button {{action 'add'}}>등록</button>
+{{else}}
+<button {{action 'update'}}>변경</button>
+<button {{action 'remove'}}>삭제</button>
+{{/unless}}
+{{#linkTo 'employees'}}<button>취소</button>{{/linkTo}}
+</div>
+</script>
+
+
+<script type="text/javascript" src="js/libs/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="js/libs/handlebars-1.0.0-rc.4.js"></script>
+<script type="text/javascript" src="js/libs/ember-1.0.0-rc.6.1.js"></script>
+<script type="text/javascript" src="js/libs/ember-data-master.js"></script>
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/router.js"></script>
+
+<script type="text/javascript" src="js/controllers/employees_controller.js"></script>
+<script type="text/javascript" src="js/controllers/employee_controller.js"></script>
+<!--  
+<script type="text/javascript" src="js/models/store.js"></script>
+<script type="text/javascript" src="js/models/employee.js"></script>
+--> 
+</body>
+</html>
+
+
+
+
+
+
+
+

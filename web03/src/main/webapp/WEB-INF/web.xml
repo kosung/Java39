@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="
+    	http://java.sun.com/xml/ns/javaee 
+    	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+
+	<!-- 다음 파라미터는 Log4jConfigListener에 의해 시스템 프로퍼티로 등록된다. 
+		=> Log4jConfigListener는 webapp.root이름으로 웹 애플리케이션 루트 경로를 저장한다.
+	-->
+	<context-param>
+		<param-name>webAppRootKey</param-name> <!-- 시스템 프로퍼티에 넣으려면 반드시 이 이름으로 설정한다. -->
+		<param-value>webapp.root</param-value> <!-- 값은 마음대로. log4j.properties에서 사용할 이름이다. -->
+	</context-param>
+
+
+	<!-- 
+	- 스프링 프레임워크의 ContextLoaderListener는 
+	기본적으로 Context Root에서 설정파일을 찾는다. 예) services.xml
+	- 만약, 클래스 경로에서 찾게 하고 싶으면 설정 파일 경로 앞에 classpath: 을 붙여라.
+	  예) classpath:services.xml
+	 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+<!-- 		<param-value>/conf/services2.xml</param-value> -->
+		<param-value>classpath:services.xml</param-value>
+<!-- 		<param-value>/WEB-INF/services.xml</param-value> -->
+	</context-param>
+
+<!-- Log4J 설정 
+	=> classpath의 루트 경로에 log4j.properties 파일을 두면 자동으로 logging이 활성화된다.
+	=> WEB-INF/.../log4j.properties 파일을 둔 경우, 아래와 같이 web.xml 파일에 
+	   log4jConfigLocation 이라는 이름으로 파라미터 정보를 설정하고, 
+	   Log4jConfigListener를 사용하여 로딩하는 방법도 있다.
+-->
+
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.properties</param-value>
+	</context-param>
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+ 
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<servlet>
+        <servlet-name>dispatch</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+<!--         <init-param> -->
+<!--             <param-name>contextConfigLocation</param-name> -->
+<!-- 			<param-value>/WEB-INF/dispatch-servlet.xml</param-value> -->
+<!--         </init-param> -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatch</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    
+	<!-- 
+	<servlet>
+        <servlet-name>json</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>json</servlet-name>
+        <url-pattern>*.json</url-pattern>
+    </servlet-mapping>
+ 	-->
+ 	
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

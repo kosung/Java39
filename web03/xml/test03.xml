@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders 
+	xmlns="http://www.bitacademy.net/dtd/order"
+	xmlns:prod="http://www.bitacademy.net/dtd/product"
+	xmlns:cust="http://www.bitacademy.net/dtd/customer">
+	<prod:product>
+		<prod:name>아이폰5</prod:name>
+		<prod:price>2000</prod:price>
+		<prod:quantity>230</prod:quantity>
+	</prod:product>
+	
+	<cust:customer>
+		<cust:name>홍길동</cust:name>
+		<cust:tel>111-1111</cust:tel>
+	</cust:customer>
+	
+	<reg-date>2011-10-11</reg-date>
+	<quantity>20</quantity>
+</orders>

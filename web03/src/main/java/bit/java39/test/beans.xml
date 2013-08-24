@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    	xmlns:p="http://www.springframework.org/schema/p"
+    	xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       	http://www.springframework.org/schema/beans 
+       	http://www.springframework.org/schema/beans/spring-beans.xsd
+       	http://www.springframework.org/schema/context
+       	http://www.springframework.org/schema/context/spring-context.xsd">
+       	
+   <!-- 8) 애노테이션을 이용한 인스턴스 관리 
+   => component-scan 태그를 설정하면, annotation-config는 자동으로 설정된다.
+   -->
+   <context:component-scan base-package="bit.java39.test"/>
+<!--    <context:annotation-config/> -->
+
+	<bean id="ohengine" class="bit.java39.test.Engine"/>
+	
+	<bean id="ohengine2" class="bit.java39.test.Engine"/>
+</beans>
+
+
+
+
+
+
+
+
+

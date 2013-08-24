@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script></script>
+</head>
+<body>
+<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+<hr>
+<div class="fb-like" 
+	data-href="http://developers.facebook.com/docs/reference/plugins/like" 
+	data-send="false" 
+	data-width="450" 
+	data-show-faces="false"
+	scope="email,read_stream"></div>
+<hr>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '606117329428071', // App ID
+      channelUrl : '//www.java39.net:9999/web04/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    console.log("fbAsyncInit....호출됨...");
+    
+    FB.Event.subscribe('auth.authResponseChange', function(response) {
+    	if (response.status == 'connected') {
+    		console.log('로그인 되었습니다.');
+    		FB.api('/me', function(response) {
+    		      console.log(response);
+    		});
+    		FB.api('/me/home', {limit: 10}, function(response) {
+  		      console.log(response);
+  			});
+    	} else if (response.status == 'not_authorized') {
+    		console.log('사용 권한이 없습니다.');
+    	} else {
+    		console.log('로그인 되지 않았습니다.');
+    	}
+    });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
